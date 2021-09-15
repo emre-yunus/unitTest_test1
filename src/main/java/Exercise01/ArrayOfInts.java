@@ -1,6 +1,7 @@
 package Exercise01;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class ArrayOfInts {
 
@@ -29,12 +30,19 @@ public class ArrayOfInts {
     }
 
     public int sumOfXLargest(int[] arrayOfInts, int x) {
-        return 0;
+        if (arrayOfInts == null || x<=0) return 0;
+        int[] copy = Arrays.copyOf(arrayOfInts, arrayOfInts.length);
+        Arrays.sort(copy);
+        int[] reversedCopy = new int[copy.length];
+        for(int index = 0; index < copy.length; index++) {
+            reversedCopy[index] = copy[copy.length - index -1];
+        }
+        return sumOfInts(Arrays.copyOf(reversedCopy, x));
     }
 
     public static void main(String[] args) {
         ArrayOfInts ex1 = new ArrayOfInts();
-        int result = ex1.sumOfInts(new int[]{1, 2, 3, 4});
+        int result = ex1.sumOfXLargest(new int[]{1, 2, 3, 4}, 2);
         System.out.println(result);
     }
 }
