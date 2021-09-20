@@ -1,5 +1,6 @@
 package Exercise01;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,6 +25,18 @@ class ArrayOfIntsSumOf3SmallestTest {
     void moreThan3Ints() {
         int result = arrayOfInts.sumOf3SmallestInts(new int[]{7, 2, 3, 4});
         assertEquals(9, result);
+    }
+
+    @Test
+    void moreThan3IntsWithNegatives() {
+        int result = arrayOfInts.sumOf3SmallestInts(new int[]{-7, 2, 3, 4});
+        assertEquals(-2, result);
+    }
+
+    @Test
+    void moreThan3IntsWithEquals() {
+        int result = arrayOfInts.sumOf3SmallestInts(new int[]{7, 2, 7, 2});
+        assertEquals(11, result);
     }
 
     @Test
