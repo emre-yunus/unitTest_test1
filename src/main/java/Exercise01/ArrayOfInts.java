@@ -29,7 +29,12 @@ public class ArrayOfInts {
     }
 
     public int sumOfXLargest(int[] arrayOfInts, int x) {
-        return 0;
+        if (arrayOfInts == null || x==0 || arrayOfInts.length==0) return 0;
+        int[] copy = Arrays.copyOf(arrayOfInts, arrayOfInts.length);
+        Arrays.sort(copy);
+        return sumOfInts(Arrays.copyOfRange(copy,
+                arrayOfInts.length - Math.min(x, arrayOfInts.length),
+                arrayOfInts.length));
     }
 
     public static void main(String[] args) {

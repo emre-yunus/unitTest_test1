@@ -9,6 +9,18 @@ public class DiscountCalculatorTest {
     private final DiscountCalculator calc = new DiscountCalculator();
 
     @Test
+    public void priceNegative() {
+        int result = calc.calculatePrice(-5, 10);
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void amountNegative() {
+        int result = calc.calculatePrice(5, -10);
+        assertEquals(0, result);
+    }
+
+    @Test
     public void noPrice() {
         int result = calc.calculatePrice(0, 10);
         assertEquals(0, result);

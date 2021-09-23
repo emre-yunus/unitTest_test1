@@ -1,17 +1,22 @@
 package Exercise02;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DiscountCalculatorHappyHourTest {
-/*
     private final DiscountCalculator calc = new DiscountCalculator();
 
     @BeforeEach
     public void activateSpecialConditions() {
         calc.setHappyHour(true);
+    }
+
+    @AfterEach
+    public void deActivateSpecialConditions() {
+        calc.setHappyHour(false);
     }
 
     @Test
@@ -23,6 +28,18 @@ public class DiscountCalculatorHappyHourTest {
     @Test
     public void amount0() {
         int result = calc.calculatePrice(10, 0);
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void priceNegative() {
+        int result = calc.calculatePrice(-5, 10);
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void amountNegative() {
+        int result = calc.calculatePrice(5, -10);
         assertEquals(0, result);
     }
 
@@ -61,5 +78,4 @@ public class DiscountCalculatorHappyHourTest {
         int result = calc.calculatePrice(1, 50);
         assertEquals(21, result);
     }
-*/
 }
