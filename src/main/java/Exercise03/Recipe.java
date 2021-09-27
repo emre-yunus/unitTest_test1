@@ -33,4 +33,8 @@ public class Recipe {
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }
+
+    public static void main(String[] args) {
+
+    }
 }
