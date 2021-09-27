@@ -2,6 +2,8 @@ package Exercise02;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DiscountCalculatorTest {
@@ -48,6 +50,14 @@ public class DiscountCalculatorTest {
     public void amount11() {
         int result = calc.calculatePrice(10, 11);
         assertEquals(108, result);
+    }
+
+    @Test
+    public void amountBetween11and19() {
+        Random r = new Random();
+        int amount = 11 + r.nextInt(8);
+        int result = calc.calculatePrice(10, amount);
+        assertEquals(9*10 + (amount-9)*9, result);
     }
 
     @Test

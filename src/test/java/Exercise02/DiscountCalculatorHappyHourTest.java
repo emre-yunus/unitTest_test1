@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DiscountCalculatorHappyHourTest {
@@ -59,6 +61,14 @@ public class DiscountCalculatorHappyHourTest {
     public void amount11() {
         int result = calc.calculatePrice(10, 11);
         assertEquals(54, result);
+    }
+
+    @Test
+    public void amountBetween11and19() {
+        Random r = new Random();
+        int amount = 11 + r.nextInt(8);
+        int result = calc.calculatePrice(10, amount);
+        assertEquals((int) (0.5 * (9*10 + (amount-9)*9)), result);
     }
 
     @Test
