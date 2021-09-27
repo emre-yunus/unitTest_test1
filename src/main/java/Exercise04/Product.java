@@ -50,5 +50,7 @@ public class Product {
         return result;
     }
 
-    
+    public static void main(String[] args) {
+        
+    }
 }
