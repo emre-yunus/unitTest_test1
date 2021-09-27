@@ -3,6 +3,7 @@ package Exercise02;
 public class DiscountCalculator {
     private boolean isHappyHour = false;
     private boolean isVIPCustomer = false;
+    private boolean isSilverVIPCustomer = false;
     private boolean isGoldenVIPCustomer = false;
 
     public int calculatePrice(int price, int amount) {
@@ -59,5 +60,9 @@ public class DiscountCalculator {
 
     public void setGoldenVIPCustomer(boolean isGoldenVIPCustomer) {
         this.isGoldenVIPCustomer = isGoldenVIPCustomer;
+    }
+
+    public void setSilverVIPCustomer(boolean isSilverVIPCustomer) {
+        this.isSilverVIPCustomer = isSilverVIPCustomer;
     }
 }
