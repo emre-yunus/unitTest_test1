@@ -2,7 +2,7 @@ package Exercise02;
 
 public class DiscountCalculator2 {
     public int calculatePrice(int price, int amount) {
-        if (price ==0 || amount==0) {
+        if (price <=0 || amount<=0) {
             return 0;
         }
         else if (price==1) {
