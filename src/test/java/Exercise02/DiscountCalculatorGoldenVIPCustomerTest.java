@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DiscountCalculatorGoldenVIPCustomerTest {
-/*
-
     private final DiscountCalculator calc = new DiscountCalculator();
 
     @BeforeEach
@@ -68,5 +66,4 @@ public class DiscountCalculatorGoldenVIPCustomerTest {
         int result = calc.calculatePrice(10, 60);
         assertEquals(417, result);
     }
-*/
 }
