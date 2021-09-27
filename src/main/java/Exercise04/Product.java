@@ -45,8 +45,8 @@ public class Product {
         if (percentage != null) {
             String format = (percentage % 1 == 0) ? "%.0f%%" : "%.1f%%";
             if (size != null) result += " ";
-            //result += String.format(format, percentage);
-            result += String.format(Locale.ROOT, format, percentage);
+            result += String.format(format, percentage);
+            //result += String.format(Locale.ROOT, format, percentage);
         }
         return result;
     }
