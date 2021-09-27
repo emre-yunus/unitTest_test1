@@ -51,6 +51,22 @@ public class Product {
     }
 
     public static void main(String[] args) {
+        Product p1 = new Product("empty", null, null);
+        System.out.println(p1.productDescription());
 
+        Product p2 = new Product("empty", 25, null);
+        System.out.println(p2.productDescription());
+
+        Product p3 = new Product("empty", null, 8.0);
+        System.out.println(p3.productDescription());
+
+        Product p4 = new Product("empty", 33, 6.0);
+        System.out.println(p4.productDescription());
+
+        Product p5 = new Product("empty", 33, 6.3);
+        System.out.println(p5.productDescription());
+
+        Product p6 = new Product("empty", 33, 6.333);
+        System.out.println(p6.productDescription());
     }
 }
