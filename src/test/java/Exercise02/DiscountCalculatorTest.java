@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DiscountCalculatorTest {
 
-    private final DiscountCalculator2 calc = new DiscountCalculator2();
+    private final DiscountCalculator calc = new DiscountCalculator();
 
     @Test
     public void priceNegative() {
