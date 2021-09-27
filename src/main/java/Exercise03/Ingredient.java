@@ -34,4 +34,10 @@ public class Ingredient {
         }
         return "" + amountNeeded + " " + plural + postFix;
     }
+
+    public static void main(String[] args) {
+        Ingredient i1 = new Ingredient(5, "appel", "appels", "appel");
+        System.out.println(i1.print(4));
+
+    }
 }
