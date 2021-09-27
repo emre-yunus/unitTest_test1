@@ -68,5 +68,16 @@ public class Product {
 
         Product p6 = new Product("empty", 33, 6.333);
         System.out.println(p6.productDescription());
+
+        Locale originalLocale = Locale.getDefault();
+        Locale.setDefault(Locale.FRANCE);
+
+        Product p7 = new Product("empty", 33, 6.3);
+        System.out.println(p7.productDescription());
+
+        Product p8 = new Product("empty", 33, 6.333);
+        System.out.println(p8.productDescription());
+
+        Locale.setDefault(originalLocale);
     }
 }
