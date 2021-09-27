@@ -3,6 +3,7 @@ package Exercise01;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ArrayOfIntsSumOf3SmallestTest {
@@ -41,8 +42,9 @@ class ArrayOfIntsSumOf3SmallestTest {
 
     @Test
     void originalArrayNotModified() {
-        int result = arrayOfInts.sumOf3SmallestInts(new int[]{7, 5, 3, 4, 7});
-        assertEquals(12, result);
+        int[] originalArrayOfInts = {7, 5, 3, 4, 7};
+        arrayOfInts.sumOf3SmallestInts(originalArrayOfInts);
+        assertArrayEquals(new int[]{7, 5, 3, 4, 7}, originalArrayOfInts);
     }
 
     @Test
@@ -56,5 +58,4 @@ class ArrayOfIntsSumOf3SmallestTest {
         int result = arrayOfInts.sumOf3SmallestInts(null);
         assertEquals(0, result);
     }
-
 }
