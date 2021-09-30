@@ -1,57 +1,60 @@
 package Exercise02;
 
 public class DiscountCalculator {
-    private boolean isHappyHour = false;
-    private boolean isVIPCustomer = false;
-    private boolean isSilverVIPCustomer = false;
-    private boolean isGoldenVIPCustomer = false;
+    private boolean isHappyHour;
+    private boolean isVIPCustomer;
+    private boolean isGoldenVIPCustomer;
+
+    class Discount {
+        int minAmount;
+        double discountFactor;
+
+        Discount(int minAmount, double discountFactor) {
+            this.minAmount = minAmount;
+            this.discountFactor = discountFactor;
+        }
+    }
+
+    Discount[] getDiscounts() {
+        if (isGoldenVIPCustomer)
+            return new Discount[]{
+                    new Discount(49, 0.5),
+                    new Discount(19, 0.7),
+                    new Discount(0, 0.8),
+            };
+        if (isVIPCustomer)
+            return new Discount[]{
+                    new Discount(19, 0.8),
+                    new Discount(0, 0.9),
+            };
+        return new Discount[]{
+                new Discount(19, 0.8),
+                new Discount(9, 0.9),
+                new Discount(0, 1),
+        };
+    }
 
     public int calculatePrice(int price, int amount) {
         if (price<=0 || amount<=0) return 0;
-        if (isVIPCustomer) return calculatePriceVIPCustomer(price, amount);
-        if (isGoldenVIPCustomer) return calculatePriceGoldenVIPCustomer(price, amount);
-        return calculatePriceNormalCustomer(price, amount);
+        final int normalPrice = calculateNormalPrice(price, amount);
+        return isHappyHour ? normalPrice / 2 : normalPrice;
     }
 
-    private int calculatePriceNormalCustomer(int price, int amount) {
-        int total;
-        if (amount<10) {
-            total = price * amount;
-        } else if (amount<20) {
-            total = (int) (price * 9 + (amount - 9) * price * 0.9);
-        } else {
-            total = (int) (price * 9 + 0.9 * price * 10 + (amount - 19) * price * 0.8);
+    private int calculateNormalPrice(int price, int amount) {
+        int remainingAmount = amount;
+        int totalPrice = 0;
+        for (Discount discount : getDiscounts()) {
+            int amountInThisRange = remainingAmount - discount.minAmount;
+            if (amountInThisRange > 0) {
+                totalPrice += price * amountInThisRange * (discount.discountFactor);
+                remainingAmount -= amountInThisRange;
+            }
         }
-        if (isHappyHour) total = total / 2;
-        return total;
+        return totalPrice;
     }
 
-    private int calculatePriceVIPCustomer(int price, int amount) {
-        int total;
-        if (amount<20) {
-            total = (int) (price * amount * 0.9);
-        } else {
-            total = (int) (price * 19 * 0.9 + (amount - 19) * price * 0.8);
-        }
-        if (isHappyHour) total = total / 2;
-        return total;
-    }
-
-    private int calculatePriceGoldenVIPCustomer(int price, int amount) {
-        int total;
-        if (amount<20) {
-            total = (int) (price * amount * 0.8);
-        } else if (amount<50) {
-            total = (int) (price * 19 * 0.8 + (amount - 19) * price * 0.7);
-        } else {
-            total = (int) (price * 19 * 0.8 + price * 30 * 0.7 + (amount - 49) * price * 0.5);
-        }
-        if (isHappyHour) total = total / 2;
-        return total;
-    }
-
-    public void setHappyHour(boolean happyHour) {
-        isHappyHour = happyHour;
+    public void setHappyHour(boolean isHappyHour) {
+        this.isHappyHour = isHappyHour;
     }
 
     public void setVIPCustomer(boolean isVIPCustomer) {
@@ -60,9 +63,5 @@ public class DiscountCalculator {
 
     public void setGoldenVIPCustomer(boolean isGoldenVIPCustomer) {
         this.isGoldenVIPCustomer = isGoldenVIPCustomer;
-    }
-
-    public void setSilverVIPCustomer(boolean isSilverVIPCustomer) {
-        this.isSilverVIPCustomer = isSilverVIPCustomer;
     }
 }
