@@ -7,7 +7,7 @@ public class LikeIt {
         if (names.length == 0) return "no one likes this :-(";
         if (names.length == 1) return names[0] + " likes this";
 
-        int nrOfNamesDisplayed = (maxPersons < names.length) ? Math.max(maxPersons - 1, 1) : names.length;
+        int nrOfNamesDisplayed = Math.min(maxPersons, names.length);
         int nrOfRemainingNames = names.length - nrOfNamesDisplayed;
         int nrOfThingsToDisplay = nrOfNamesDisplayed + (nrOfRemainingNames > 0 ? 1 : 0);
 
@@ -24,5 +24,10 @@ public class LikeIt {
             else
                 result += " and " + names[names.length - 1];
         return result + " like this";
+    }
+
+    public static void main(String[] args) {
+        LikeIt li = new LikeIt();
+        System.out.println(li.display(new String[]{"Jan", "Aziz", "Ibrahim", "Eddy", "Pieter", "Tin", "Els"}, 5));
     }
 }
