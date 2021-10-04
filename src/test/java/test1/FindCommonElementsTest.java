@@ -2,6 +2,8 @@ package test1;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class FindCommonElementsTest {
@@ -33,6 +35,7 @@ public class FindCommonElementsTest {
     void found2Equals() {
         int[] result = arrayOfInts.findCommonElements(new int[]{1, 2, 3}, new int[]{3, 1, 4});
         int[] expected = new int[]{1, 3};
+        System.out.println(Arrays.toString(result));
         assertArrayEquals(expected, result);
     }
 
